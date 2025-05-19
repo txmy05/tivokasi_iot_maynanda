@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "Maynanda",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 4.7, "left": 4.6, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": 50, "left": 250, "attrs": { "pins": "i2c" } },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnNext",
+      "top": 284.6,
+      "left": 240,
+      "attrs": { "color": "green", "label": "Next" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnPrev",
+      "top": 207.8,
+      "left": 240,
+      "attrs": { "color": "blue", "label": "Prev" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd:SCL", "esp:D22", "green", [ "h-120", "v-50" ] ],
+    [ "lcd:SDA", "esp:D21", "green", [ "h-130", "v-20" ] ],
+    [ "lcd:VCC", "esp:3V3", "red", [ "h-100", "v30" ] ],
+    [ "lcd:GND", "esp:GND.1", "black", [ "h-140", "v50" ] ],
+    [ "btnNext:1.l", "esp:GND.2", "black", [ "h0", "v-30" ] ],
+    [ "btnNext:2.l", "esp:D18", "green", [ "h0", "v-70" ] ],
+    [ "btnPrev:1.l", "esp:GND.2", "black", [ "h-10", "v-40" ] ],
+    [ "btnPrev:2.l", "esp:D19", "green", [ "h-10", "v-80" ] ]
+  ],
+  "dependencies": {}
+}
